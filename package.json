@@ -1,0 +1,19 @@
+{
+  "name": "sms-template-system",
+  "version": "1.0.0",
+  "description": "this is a sms templating service",
+  "main": "app.js",
+  "author": "sanju",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "mongoose": "^6.6.1",
+    "mongoose-unique-validator": "^3.1.0"
+  }
+}

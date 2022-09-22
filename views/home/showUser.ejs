@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+
+    <table class="table table-striped">
+      <tr>
+        <th class="table-head">First Name</th>
+        <th class="table-head">Last Name</th>
+        <th class="table-head">Email</th>
+      </tr>
+
+      <% for(let datas of data) {%>
+      <tr>
+        <td class="box align-middle"><%= datas.name%></td>
+        <td class="box align-middle"><%= datas.batch%></td>
+        <td class="box align-middle"><%= datas.domain%></td>
+        <td class="box align-middle"><%= datas.number%></td>
+        <!-- <td class="box align-middle">
+                    <div class=""><img class="img-responsive image" src="<%= datas.img %>" alt=""></div>
+                </td> -->
+      </tr>
+
+      <% } %>
+    </table>
+
+    <%- include('../partials/footer'); %>
+  </body>
+</html>

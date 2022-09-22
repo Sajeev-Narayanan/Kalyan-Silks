@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('../partials/head'); %>
+  </head>
+
+  <body class="container">
+    <header><%- include('../partials/header'); %></header>
+    <!-- 
+    <form action="/users/addAdmin" method="post">
+
+        <input type="text" name="firstName" placeholder="First Name" required><br>
+        <input type="text" name="lastName" placeholder="Last Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        
+        <select class="select-box" name="type" id="">
+            <option value="admin">admin</option>
+            <option value="user">user</option>
+        </select><br>
+        <input type="password" name="password" placeholder="password" required ><br>
+        <input class="btn btn-outline-primary" type="submit" name="" value="Submit" id="">
+
+    </form> -->
+    <section class="container body-session">
+      <div class="row">
+        <div class="col col-12">
+          <div class="col-4 card">
+            <div class="card-image1"></div>
+            <a href="/users/adAdmin" class="btn btn-outline-primary bton"
+              >ADD</a
+            >
+          </div>
+          <div class="col-4 card">
+            <div class="card-image2"></div>
+            <a href="/users/viewUser" class="btn btn-outline-primary bton"
+              >Users</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include('../partials/footer'); %>
+  </body>
+</html>
