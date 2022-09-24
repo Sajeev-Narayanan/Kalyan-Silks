@@ -5,15 +5,42 @@
   </head>
 
   <body class="container">
+    <nav>
+      <nav class="navbar navbar-expand-lg navebarcss">
+        <ul class="navbar-nav mr-auto naveflux">
+          <li class="nav-item">
+            <a class="nav-link home" href="/users/userPage">USER</a>
+          </li>
+          <a href="/users/logout" class=""
+            ><button class="btn btn-outline-primary btn-lg border-4">
+              LOGOUT
+            </button></a
+          >
+        </ul>
+      </nav>
+    </nav>
+
     <section>
-      <div class="user-nav">
-        <h1>User</h1>
-        <a href="/users/logout" class=""
-          ><button class="btn btn-outline-primary btn-lg border-4">
-            Logout
-          </button></a
-        >
-      </div>
+      <table class="table table-striped">
+        <tr>
+          <th class="box">#</th>
+          <th class="table-head">First Name</th>
+          <th class="table-head">Last Name</th>
+          <th class="table-head">Email</th>
+          <th class="table-head">Type</th>
+        </tr>
+
+        <% let i=1; for(let datas of showuser) {%>
+        <tr>
+          <td class="box align-middle"><%= i %></td>
+          <td class="box align-middle"><%= datas.firstName%></td>
+          <td class="box align-middle"><%= datas.lastName%></td>
+          <td class="box align-middle"><%= datas.email%></td>
+          <td class="box align-middle"><%= datas.type%></td>
+        </tr>
+
+        <% i++ } %>
+      </table>
     </section>
 
     <%- include('../partials/footer'); %>

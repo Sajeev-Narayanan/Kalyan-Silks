@@ -237,13 +237,15 @@ label {
   margin-right: 30px;
 }
 .card-image1 {
-  width: 14rem;
+  width: 12rem;
   height: 12rem;
-  background: url("./images/add-admin.png");
+  background: url("./images/addUser2.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
   margin-bottom: 30px;
 }
 .card-image2 {
-  width: 14rem;
+  width: 12rem;
   height: 12rem;
   background: url("./images/viewUser.jfif");
   margin-bottom: 30px;
@@ -256,5 +258,10 @@ label {
   letter-spacing: 5px;
 }
 .table-head {
+  color: aliceblue;
+}
+
+.box {
+  align-items: center;
   color: aliceblue;
 }

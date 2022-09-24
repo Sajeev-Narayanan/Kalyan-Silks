@@ -6,25 +6,49 @@
   <body class="container">
     <header><%- include('../partials/header'); %></header>
 
+    <div>
+      <form action="" method="post">
+        <input type="text" placeholder="search here" style="height: 40px" />
+        <button type="submit" class="btn btn-outline-success">Search</button>
+      </form>
+    </div>
+
     <table class="table table-striped">
       <tr>
+        <th class="box">#</th>
         <th class="table-head">First Name</th>
         <th class="table-head">Last Name</th>
         <th class="table-head">Email</th>
+        <th class="table-head">Type</th>
+        <th></th>
       </tr>
 
-      <% for(let datas of data) {%>
+      <% let i=1; for(let datas of showuser) {%>
+
       <tr>
-        <td class="box align-middle"><%= datas.name%></td>
-        <td class="box align-middle"><%= datas.batch%></td>
-        <td class="box align-middle"><%= datas.domain%></td>
-        <td class="box align-middle"><%= datas.number%></td>
-        <!-- <td class="box align-middle">
-                    <div class=""><img class="img-responsive image" src="<%= datas.img %>" alt=""></div>
-                </td> -->
+        <td class="box align-middle"><%= i %></td>
+        <td class="box align-middle"><%= datas.firstName%></td>
+        <td class="box align-middle"><%= datas.lastName%></td>
+        <td class="box align-middle"><%= datas.email%></td>
+        <td class="box align-middle"><%= datas.type%></td>
+        <td class="box align-middle">
+          <a
+            href="/users/editUser/<%= datas._id %>/edit "
+            class="btn btn-warning"
+            >EDIT</a
+          >
+          <% if (datas.type==="user") { %>
+          <form
+            action="/users/deleteUser/<%= datas._id %>?_method=DELETE"
+            method="post"
+          >
+            <button class="btn btn-danger">DELETE</button>
+          </form>
+        </td>
+        <% } %>
       </tr>
 
-      <% } %>
+      <% i++ } %>
     </table>
 
     <%- include('../partials/footer'); %>
