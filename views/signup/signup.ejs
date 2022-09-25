@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">LAST NAME</label>
-                                <input type="text" name="lastName"  class="form-control" required>
+                                <input type="text" name="lastName" pattern="[A-Za-z]{1,100}" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">EMAIL</label>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" class="form-control" i required>
+                                <input type="password" name="password" class="form-control" pattern=".{8,}" i required>
                             </div>
                             <span style="color: red;"><%= mesage %> </span>
 

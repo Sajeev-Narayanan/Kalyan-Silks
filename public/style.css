@@ -4,6 +4,13 @@ body {
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
 }
+
+.home {
+  font-size: 30px;
+  font-weight: 700;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: aliceblue;
+}
 .showbg {
   width: 100vw;
   height: 100vh;
@@ -30,7 +37,7 @@ body {
   height: 70px;
   margin: 20px;
   background: transparent;
-  border: solid 3px black;
+  border: solid 4px black;
   border-radius: 10px;
   color: white;
   text-decoration: none;
@@ -76,8 +83,9 @@ body {
 }
 input[type="text"] {
   background-color: #1a2226;
+  opacity: 70%;
   border: none;
-  border-bottom: 2px solid #0db8de;
+  border-bottom: 3px solid #0db8de;
   border-top: 0px;
   border-radius: 0px;
   font-weight: bold;
@@ -85,10 +93,12 @@ input[type="text"] {
   margin-bottom: 20px;
   padding-left: 0px;
   color: #ecf0f5;
+  height: 50px;
 }
 
 input[type="email"] {
   background-color: #1a2226;
+  opacity: 70%;
   border: none;
   border-bottom: 2px solid #0db8de;
   border-top: 0px;
@@ -98,11 +108,14 @@ input[type="email"] {
   margin-bottom: 20px;
   padding-left: 0px;
   color: #ecf0f5;
+  height: 50px;
 }
 
 input[type="password"] {
   background-color: #1a2226;
+  opacity: 70%;
   border: none;
+  height: 50px;
   border-bottom: 2px solid #0db8de;
   border-top: 0px;
   border-radius: 0px;
@@ -114,6 +127,8 @@ input[type="password"] {
 }
 .select-box {
   background-color: #1a2226;
+  height: 50px;
+  opacity: 70%;
   border: none;
   border-bottom: 2px solid #0db8de;
   border-top: 0px;
@@ -200,7 +215,8 @@ label {
 }
 
 .navebarcss {
-  background-color: #4b7e7e;
+  background-color: #040404;
+  opacity: 60%;
   padding-left: 10px;
   padding-right: 10px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -213,6 +229,15 @@ label {
 }
 .body-session {
   position: relative;
+}
+
+.tabl {
+  backdrop-filter: blur(5px);
+  /* transform: translate(-50%, -50%); */
+  box-shadow: 0 0 40px rgb(8, 7, 6, 0.6);
+  border: 2px solid rgb(255, 255, 255, 0.1);
+  background-color: rgb(255, 255, 255, 0.13);
+  margin-top: 50px;
 }
 
 .card {

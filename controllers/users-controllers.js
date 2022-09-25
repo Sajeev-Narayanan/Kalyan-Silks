@@ -3,9 +3,14 @@ const User = require("../models/users-model");
 
 let mesg = "";
 let mesage = "";
-let showuser;
+let showuser = "";
 
 const loginPage = (req, res) => {
+  if (req.cookies.userId && req.cookies.userType == "admin") {
+    res.redirect("/users/home");
+  } else if (req.cookies.userId) {
+    res.redirect("/users/userPage");
+  }
   res.render("login/login", { message: mesg });
   mesg = "";
 };
@@ -35,7 +40,11 @@ const loginPost = async (req, res, next) => {
           maxAge: 2 * 60 * 60 * 1000,
           httpOnly: true,
         });
-        res.redirect("/users/home");
+        if (req.cookies.userType == "admin") {
+          res.redirect("/users/home");
+        } else {
+          res.redirect("/users/login");
+        }
       } else {
         res.cookie("userId", email, {
           maxAge: 2 * 60 * 60 * 1000,
@@ -57,7 +66,7 @@ const loginPost = async (req, res, next) => {
 };
 
 const userPage = async (req, res) => {
-  const showuser = await User.find({});
+  const showuser = await User.find({}).sort({ firstName: 1 });
   res.render("user/user", { showuser });
 };
 
@@ -118,7 +127,11 @@ const addAdmin = async (req, res, next) => {
     try {
       await user.save();
       // res.send(user)
-      res.redirect("/users/home");
+      if (req.cookies.userType == "admin") {
+        res.redirect("/users/home");
+      } else {
+        res.redirect("/");
+      }
     } catch (error) {
       res.status(500).send(error);
     }
@@ -134,7 +147,7 @@ const adAdmin = (req, res) => {
 };
 
 const viewUser = async (req, res) => {
-  showuser = await User.find({});
+  showuser = await User.find({}).sort({ firstName: 1 });
   res.redirect("/users/viewUserGet");
 
   // res.render("home/showUser", { showuser });
@@ -144,7 +157,17 @@ const viewUserGet = (req, res) => {
   res.render("home/showUser", { showuser: showuser });
 };
 
-const search = async (req, res) => {};
+const search = async (req, res) => {
+  showuser = await User.find({
+    $or: [
+      { firstName: req.body.search },
+      { lastName: req.body.search },
+      { type: req.body.search },
+    ],
+  }).sort({ firstName: 1 });
+
+  res.redirect("/users/viewUserGet");
+};
 
 const deleteUser = async (req, res) => {
   const userId = req.params.id;

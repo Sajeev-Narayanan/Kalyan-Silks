@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body class="container">
     <header><%- include('../partials/header'); %></header>
@@ -20,6 +21,7 @@
         placeholder="First Name"
         required
         class="form-control"
+        pattern="[A-Za-z]{1,100}"
       /><br />
       <input
         type="text"
@@ -28,6 +30,7 @@
         placeholder="Last Name"
         required
         class="form-control"
+        pattern="[A-Za-z]{1,100}"
       /><br />
       <input
         type="email"
@@ -50,6 +53,7 @@
         placeholder="password"
         required
         class="form-control"
+        pattern=".{8,}"
       /><br />
 
       <input

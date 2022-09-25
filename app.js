@@ -15,6 +15,14 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(function (req, res, next) {
+  res.set(
+    "Cache-Control",
+    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+  );
+  next();
+});
+
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -31,18 +39,16 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res, next) => {
-  res.render("show/show");
+  if (req.cookies.userId && req.cookies.userType == "admin") {
+    res.redirect("/users/home");
+  } else if (req.cookies.userType == "user") {
+    res.redirect("/users/userPage");
+  } else {
+    res.render("show/show");
+  }
 });
 
 app.use("/users", userRoutes);
-
-app.use(function (req, res, next) {
-  res.set(
-    "Cache-Control",
-    "no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
-  );
-  next();
-});
 
 app.get("*", (req, res, next) => {
   res.send("404, Not Found").status(404);

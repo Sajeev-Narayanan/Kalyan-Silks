@@ -7,13 +7,27 @@
     <header><%- include('../partials/header'); %></header>
 
     <div>
-      <form action="" method="post">
-        <input type="text" placeholder="search here" style="height: 40px" />
+      <form action="/users/search" method="post" style="margin-top: 20px">
+        <input
+          type="text"
+          name="search"
+          pattern="[A-Za-z]{1,100}"
+          placeholder="search here"
+          style="
+            height: 40px;
+            width: 300px;
+            border-color: #038b4c;
+            opacity: 70%;
+            font-size: 15px;
+            color: white;
+            border-radius: 5px;
+          "
+        />
         <button type="submit" class="btn btn-outline-success">Search</button>
       </form>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped tabl">
       <tr>
         <th class="box">#</th>
         <th class="table-head">First Name</th>
