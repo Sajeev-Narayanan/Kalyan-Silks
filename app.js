@@ -39,9 +39,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 app.get("/", (req, res, next) => {
-  if (req.cookies.userId && req.cookies.userType == "admin") {
+  if (req.cookies.userType === "admin") {
     res.redirect("/users/home");
-  } else if (req.cookies.userType == "user") {
+  } else if (req.cookies.userType === "user") {
     res.redirect("/users/userPage");
   } else {
     res.render("show/show");

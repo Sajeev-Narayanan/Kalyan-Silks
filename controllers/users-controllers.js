@@ -5,6 +5,8 @@ let mesg = "";
 let mesage = "";
 let showuser = "";
 
+// loginpage get #####################
+
 const loginPage = (req, res) => {
   if (req.cookies.userId && req.cookies.userType == "admin") {
     res.redirect("/users/home");
@@ -15,14 +17,24 @@ const loginPage = (req, res) => {
   mesg = "";
 };
 
+// signup page get ########################
+
 const signupPage = (req, res) => {
   res.render("signup/signup", { mesage: mesage });
   mesage = "";
 };
 
+// admin home page ###########################
+
 const homePage = (req, res) => {
-  res.render("home/home");
+  if (req.cookies.userId && req.cookies.userType == "admin") {
+    res.render("home/home");
+  } else {
+    res.redirect("/users/userPage");
+  }
 };
+
+// login post method ###############################
 
 const loginPost = async (req, res, next) => {
   const { email, password } = req.body;
@@ -153,16 +165,18 @@ const viewUser = async (req, res) => {
   // res.render("home/showUser", { showuser });
 };
 
-const viewUserGet = (req, res) => {
+const viewUserGet = async (req, res) => {
   res.render("home/showUser", { showuser: showuser });
+  showuser = await User.find({}).sort({ firstName: 1 });
 };
 
 const search = async (req, res) => {
+  const srh = req.body.search;
   showuser = await User.find({
     $or: [
-      { firstName: req.body.search },
-      { lastName: req.body.search },
-      { type: req.body.search },
+      { firstName: { $regex: ".*" + srh + ".*" } },
+      { lastName: { $regex: ".*" + srh + ".*" } },
+      { type: { $regex: ".*" + srh + ".*" } },
     ],
   }).sort({ firstName: 1 });
 
