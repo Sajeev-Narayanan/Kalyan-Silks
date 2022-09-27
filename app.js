@@ -6,6 +6,7 @@ const userRoutes = require("./routes/users-routes");
 const cookieParser = require("cookie-parser");
 const filestore = require("session-file-store");
 const session = require("express-session");
+const path = require("path");
 
 const app = express();
 
@@ -36,7 +37,10 @@ app.use((req, res, next) => {
 
 app.set("view engine", "ejs");
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("public"));
+
+app.use(express.static("files"));
 
 app.get("/", (req, res, next) => {
   if (req.cookies.userType === "admin") {

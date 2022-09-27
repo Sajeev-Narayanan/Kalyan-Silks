@@ -6,7 +6,10 @@ const userControllers = require("../controllers/users-controllers");
 
 const auth = require("../middleware/auth");
 
+const path = require("path");
+
 const router = express.Router();
+router.use(express.static(path.join(__dirname, "public")));
 
 router.use(express.static("public"));
 
