@@ -290,3 +290,9 @@ label {
   align-items: center;
   color: aliceblue;
 }
+
+footer {
+  position: fixed;
+  bottom: 0%;
+  left: 45%;
+}
